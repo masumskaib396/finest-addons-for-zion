@@ -181,32 +181,9 @@ class Finest_IconBox extends Element {
 				'dynamic'     => [
 					'enabled' => true,
 				],
-			] 
-		);
-
-		$options->add_option(
-			'position',
-			[
-				'type'             => 'select',
-				'title'            => esc_html__( 'Icon position', 'finest-zionbuilder' ),
-				'description'      => esc_html__( 'Set the desired timing function for the transition.', 'finest-zionbuilder' ),
-				'options'          => [
-					[
-						'name' => esc_html__( 'Icon on top', 'finest-zionbuilder' ),
-						'id'   => 'top',
-					],
-					[
-						'name' => esc_html__( 'Icon on left', 'finest-zionbuilder' ),
-						'id'   => 'left',
-					],
-					[
-						'name' => esc_html__( 'Icon on right', 'finest-zionbuilder' ),
-						'id'   => 'right',
-					],
-				],
-				'default'          => 'top',
 			]
 		);
+
 
 	}
 
@@ -219,19 +196,19 @@ class Finest_IconBox extends Element {
 	 * @return void
 	 */
 	public function on_register_styles() {
-		$this->register_style_options_element(
-			'icon_box_warper',
-			[
-				'title'      => esc_html__( 'Icon Box Wraper Custom', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .finest__icon-box',
-			]
-		);
+		// $this->register_style_options_element(
+		// 	'icon_box_warper',
+		// 	[
+		// 		'title'      => esc_html__( 'Icon Box Wraper Custom', 'finest-zionbuilder' ),
+		// 		'selector'   => '{{ELEMENT}} .finest__icon-box',
+		// 	]
+		// );
 
 		$this->register_style_options_element(
 			'icon_styles',
 			[
 				'title'      => esc_html__( 'Icon styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .finest__icon',
+				'selector'   => '{{ELEMENT}} .finest__icon span',
 			]
 		);
 
