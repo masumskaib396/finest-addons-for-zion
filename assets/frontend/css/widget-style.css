@@ -1,0 +1,111 @@
+/*--------------------------------------------------------------============================================================
+/*==============================
+[Table of contents]
+
+WIDGET STYLESHEET
+
+ * HEADDING
+
+---------------------------------- */
+/*---------------------------------------------------
+ICON BOX
+----------------------------------------------------*/
+
+.finest__icon-box {
+    box-shadow: 0px 4px 80px rgba(8, 15, 30, 0.06);
+    border-radius: 3px;
+    padding: 30px;
+}
+.finest__icon span{
+    font-size: 24px;
+    margin-bottom: 20px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EF2469;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.finest__icon-title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.finest__icon-box.left {
+    display: -webkit-inline-box;
+    display: -webkit-inline-box;
+}
+.finest__icon-box.left .finest__icon span{
+    margin-right: 12px;
+}
+
+
+/* style tow */
+.finest__icon-box.style__one {
+    display: flex;
+}
+
+.style__one .finest__icon span{
+    margin-right: 20px;
+    margin-bottom: 0;
+    height: 50px;
+    width: 50px;
+}
+
+/* Sytle three */
+.finest__icon-box.style__two {
+    display: flex;
+    padding: 0;
+    box-shadow: none;
+    padding: 20px;
+    transition: 0.4s;
+    /* background-color: #fff; */
+}
+
+.style__two .finest__icon span {
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.style__two.finest__icon-title {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 32px;
+    margin-bottom: 15px;
+}
+
+.finest__icon-box.style__two:hover {
+    box-shadow: 0px 4px 4px rgba(35, 40, 105, 0.08);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.icon_square span {
+    border-radius: 0;
+}
+.icon_framed span {
+    background-color: transparent;
+    color: #EF2469;
+    border: 2px solid #EF2469;
+}
+.icon_default span {
+    background-color: transparent;
+    color: #EF2469;
+    padding: 0;
+}
+.icon_circle span{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.finest__icon.icon__default span {
+    justify-content: left;
+}
