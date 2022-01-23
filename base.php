@@ -67,18 +67,23 @@ final class Finest_ZionBuilder_Extension {
 		);
 
 
+
+
+
 		// css javascript
+		wp_enqueue_script(
+			'jstyped',
+			FZB_ASSETS_PUBLIC .'/frontend/js/typed.min.js',
+			['jquery'], FZB_VERSION, true
+		);
+
 		wp_enqueue_script(
 			'finest-zionbuilder',
 			FZB_ASSETS_PUBLIC .'/frontend/js/widget.js',
 			['jquery'], time(), true
 		);
 
-		wp_enqueue_script(
-			'jstyped',
-			FZB_ASSETS_PUBLIC .'/frontend/js/jstyped.min.js',
-			['jquery'], FZB_VERSION, true
-		);
+
 
 	}
 
@@ -98,6 +103,10 @@ final class Finest_ZionBuilder_Extension {
 
 		require_once( FZB_WIDGET_DIR . 'Iconbox/widget.php');
 		require_once( FZB_WIDGET_DIR . 'AnimateText/widget.php');
+		require_once( FZB_WIDGET_DIR . 'Testimonial/widget.php');
+		require_once( FZB_WIDGET_DIR . 'GradientHeading/widget.php');
+		require_once( FZB_WIDGET_DIR . 'DualHeading/widget.php');
+		require_once( FZB_WIDGET_DIR . 'TeamMembar/widget.php');
 
     }
 	public $elements_manager = null;

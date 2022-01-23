@@ -196,19 +196,12 @@ class Finest_IconBox extends Element {
 	 * @return void
 	 */
 	public function on_register_styles() {
-		// $this->register_style_options_element(
-		// 	'icon_box_warper',
-		// 	[
-		// 		'title'      => esc_html__( 'Icon Box Wraper Custom', 'finest-zionbuilder' ),
-		// 		'selector'   => '{{ELEMENT}} .finest__icon-box',
-		// 	]
-		// );
 
 		$this->register_style_options_element(
 			'icon_styles',
 			[
 				'title'      => esc_html__( 'Icon styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .finest__icon span',
+				'selector'   => '{{ELEMENT}} .fzb__icon span',
 			]
 		);
 
@@ -216,7 +209,7 @@ class Finest_IconBox extends Element {
 			'heading_styles',
 			[
 				'title'      => esc_html__( 'Heading styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .finest__icon-title',
+				'selector'   => '{{ELEMENT}} .fzb__icon-title',
 			]
 		);
 
@@ -224,7 +217,7 @@ class Finest_IconBox extends Element {
 			'discription_styles',
 			[
 				'title'      => esc_html__( 'Discription styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .finest__icon-discription',
+				'selector'   => '{{ELEMENT}} .fzb__icon-discription',
 			]
 		);
 
@@ -245,9 +238,9 @@ class Finest_IconBox extends Element {
 		$discription  = $options->get_value( 'icon_box_dis');
 
 		?>
-			<div class="finest__icon-box <?php echo esc_attr( $icon_style); ?>" >
+			<div class="fzb__icon-box <?php echo esc_attr( $icon_style); ?>" >
 				<?php if($icon): ?>
-					<div class="finest__icon <?php echo esc_attr( $icon_shape . ' ' . $icon_view) ?>">
+					<div class="fzb__icon <?php echo esc_attr( $icon_shape . ' ' . $icon_view) ?>">
 						<?php
 							$this->attach_icon_attributes('icon', $icon);
 							$this->render_tag(
@@ -259,11 +252,11 @@ class Finest_IconBox extends Element {
 					</div>
 				<?php endif; ?>
 
-				<div class="finest__icon-content">
-					<h2 class="finest__icon-title">
+				<div class="fzb__icon-content">
+					<h2 class="fzb__icon-title">
 						<?php echo esc_html($heading) ?>
 					</h2>
-					<span class="finest__icon-discription">
+					<span class="fzb__icon-discription">
 						<?php echo fzb_get_meta($discription) ?>
 					</span>
 				</div>

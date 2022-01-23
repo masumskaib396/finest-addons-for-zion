@@ -15,12 +15,12 @@ class Finest_Custom_Style_Option
 	{
 
 		// Add new controls to advanced tab globally
-		add_action( 'zionbuilder/schema/style_options', [ $this, 'add_style_options' ] );
+		add_action( 'zionbuilder/schema/style_options', [ $this, 'finest_add_style_options' ] );
 
 	}
 
 
-    public function add_style_options( $options ) {
+    public function finest_add_style_options( $options ) {
 		// Display
 		$display_accordion = $options->get_option( '_styles.pseudo_selectors.display' );
 		if ( $display_accordion ) {
@@ -28,20 +28,21 @@ class Finest_Custom_Style_Option
 			// Add filter options
 			$this->attach_display_options( $display_accordion );
 		}
-		// Box Shadow
-		// $box_shadow_group = $options->get_option( '_styles.pseudo_selectors.borders.box-shadow-group' );
-		// if ( $box_shadow_group ) {
 
-		// 	// Add transition options
-		// 	$this->attach_box_shadow_options( $box_shadow_group );
-		// }
+		//Box Shadow
+		$box_shadow_group = $options->get_option( '_styles.pseudo_selectors.borders.box-shadow-group' );
+		if ( $box_shadow_group ) {
+
+			// Add transition options
+			$this->attach_box_shadow_options( $box_shadow_group );
+		}
 
 		// Transitions
-		$transitions_accordion = $options->get_option( '_styles.pseudo_selectors.transitions' );
-		if ( $transitions_accordion ) {
-			// Add transition options
-			$this->attach_transitions_options( $transitions_accordion );
-		}
+		// $transitions_accordion = $options->get_option( '_styles.pseudo_selectors.transitions' );
+		// if ( $transitions_accordion ) {
+		// 	// Add transition options
+		// 	$this->attach_transitions_options( $transitions_accordion );
+		// }
 
 		// Transform
 		$transform_accordion = $options->get_option( '_styles.pseudo_selectors.transform' );
@@ -58,14 +59,26 @@ class Finest_Custom_Style_Option
 
 	}
 
-	// Filte Style
 
+	public static function attach_box_shadow_options( $options ) {
+		$options->add_option(
+			'box-shadow',
+			[
+				'type'        => 'shadow',
+				'title'       => __( 'Box Shadow', 'zionbuilder-pro' ),
+				'description' => __( 'Set the desired box shadow.', 'finest-zionbuilder' ),
+				'shadow_type' => 'box-shadow',
+			]
+		);
+	}
+
+	// Filte Style
     public static function attach_display_options( $options ) {
 		$display_group = $options->add_group(
 			'display-group',
 			[
 				'type'  => 'panel_accordion',
-				'title' => __( 'Display options', 'zionbuilder-pro' ),
+				'title' => __( 'Display options', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -73,33 +86,33 @@ class Finest_Custom_Style_Option
 			'display',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Display', 'zionbuilder-pro' ),
-				'description' => __( 'Display css properties', 'zionbuilder-pro' ),
+				'title'       => __( 'Display', 'finest-zionbuilder' ),
+				'description' => __( 'Display css properties', 'finest-zionbuilder' ),
 				'columns'     => 3,
 				'search_tags' => [ 'flex', 'block', 'inline', 'none' ],
 				'options'     => [
 					[
-						'name' => __( 'flex', 'zionbuilder-pro' ),
+						'name' => __( 'flex', 'finest-zionbuilder' ),
 						'id'   => 'flex',
 					],
 					[
-						'name' => __( 'block', 'zionbuilder-pro' ),
+						'name' => __( 'block', 'finest-zionbuilder' ),
 						'id'   => 'block',
 					],
 					[
-						'name' => __( 'inline', 'zionbuilder-pro' ),
+						'name' => __( 'inline', 'finest-zionbuilder' ),
 						'id'   => 'inline',
 					],
 					[
-						'name' => __( 'inline-flex', 'zionbuilder-pro' ),
+						'name' => __( 'inline-flex', 'finest-zionbuilder' ),
 						'id'   => 'inline-flex',
 					],
 					[
-						'name' => __( 'inline-block', 'zionbuilder-pro' ),
+						'name' => __( 'inline-block', 'finest-zionbuilder' ),
 						'id'   => 'inline-block',
 					],
 					[
-						'name' => __( 'none', 'zionbuilder-pro' ),
+						'name' => __( 'none', 'finest-zionbuilder' ),
 						'id'   => 'none',
 					],
 				],
@@ -110,8 +123,8 @@ class Finest_Custom_Style_Option
 			'visibility',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Visibility', 'zionbuilder-pro' ),
-				'description' => __( 'Set visibility option for element', 'zionbuilder-pro' ),
+				'title'       => __( 'Visibility', 'finest-zionbuilder' ),
+				'description' => __( 'Set visibility option for element', 'finest-zionbuilder' ),
 				'columns'     => 2,
 				'options'     => [
 					[
@@ -130,8 +143,8 @@ class Finest_Custom_Style_Option
 			'overflow',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Overflow', 'zionbuilder-pro' ),
-				'description' => __( 'Set overflow for element.', 'zionbuilder-pro' ),
+				'title'       => __( 'Overflow', 'finest-zionbuilder' ),
+				'description' => __( 'Set overflow for element.', 'finest-zionbuilder' ),
 				'columns'     => 3,
 				'options'     => [
 					[
@@ -154,7 +167,7 @@ class Finest_Custom_Style_Option
 			'flexbox-container-group',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Flexbox container options', 'zionbuilder-pro' ),
+				'title'     => __( 'Flexbox container options', 'finest-zionbuilder' ),
 				// 'dependency'  => [
 				// 	[
 				// 		'option' => 'display',
@@ -172,15 +185,15 @@ class Finest_Custom_Style_Option
 				'width'   => 60,
 				'options' => [
 					[
-						'name' => __( 'vertical', 'zionbuilder-pro' ),
+						'name' => __( 'vertical', 'finest-zionbuilder' ),
 						'id'   => 'column',
 					],
 					[
-						'name' => __( 'horizontal', 'zionbuilder-pro' ),
+						'name' => __( 'horizontal', 'finest-zionbuilder' ),
 						'id'   => 'row',
 					],
 				],
-				'title'   => __( 'Flex direction', 'zionbuilder-pro' ),
+				'title'   => __( 'Flex direction', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -191,12 +204,12 @@ class Finest_Custom_Style_Option
 				'width'   => 40,
 				'options' => [
 					[
-						'name' => __( 'flex-reverse', 'zionbuilder-pro' ),
+						'name' => __( 'flex-reverse', 'finest-zionbuilder' ),
 						'icon' => 'reverse',
 						'id'   => true,
 					],
 				],
-				'title'   => __( 'Flex reverse', 'zionbuilder-pro' ),
+				'title'   => __( 'Flex reverse', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -204,31 +217,31 @@ class Finest_Custom_Style_Option
 			'align-items',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Align items', 'zionbuilder-pro' ),
-				'description' => __( 'Set align items', 'zionbuilder-pro' ),
+				'title'       => __( 'Align items', 'finest-zionbuilder' ),
+				'description' => __( 'Set align items', 'finest-zionbuilder' ),
 				'options'     => [
 					[
-						'name' => __( 'flex-start', 'zionbuilder-pro' ),
+						'name' => __( 'flex-start', 'finest-zionbuilder' ),
 						'id'   => 'flex-start',
 						'icon' => 'align-start',
 					],
 					[
-						'name' => __( 'center', 'zionbuilder-pro' ),
+						'name' => __( 'center', 'finest-zionbuilder' ),
 						'id'   => 'center',
 						'icon' => 'align-center',
 					],
 					[
-						'name' => __( 'flex-end', 'zionbuilder-pro' ),
+						'name' => __( 'flex-end', 'finest-zionbuilder' ),
 						'id'   => 'flex-end',
 						'icon' => 'align-end',
 					],
 					[
-						'name' => __( 'stretch', 'zionbuilder-pro' ),
+						'name' => __( 'stretch', 'finest-zionbuilder' ),
 						'id'   => 'stretch',
 						'icon' => 'align-stretch',
 					],
 					[
-						'name' => __( 'baseline', 'zionbuilder-pro' ),
+						'name' => __( 'baseline', 'finest-zionbuilder' ),
 						'id'   => 'baseline',
 						'icon' => 'align-baseline',
 					],
@@ -240,32 +253,32 @@ class Finest_Custom_Style_Option
 			'justify-content',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Justify', 'zionbuilder-pro' ),
-				'description' => __( 'Set float option for element', 'zionbuilder-pro' ),
+				'title'       => __( 'Justify', 'finest-zionbuilder' ),
+				'description' => __( 'Set float option for element', 'finest-zionbuilder' ),
 				'columns'     => 5,
 				'options'     => [
 					[
-						'name' => __( 'flex-start', 'zionbuilder-pro' ),
+						'name' => __( 'flex-start', 'finest-zionbuilder' ),
 						'id'   => 'flex-start',
 						'icon' => 'justify-start',
 					],
 					[
-						'name' => __( 'center', 'zionbuilder-pro' ),
+						'name' => __( 'center', 'finest-zionbuilder' ),
 						'id'   => 'center',
 						'icon' => 'justify-center',
 					],
 					[
-						'name' => __( 'flex-end', 'zionbuilder-pro' ),
+						'name' => __( 'flex-end', 'finest-zionbuilder' ),
 						'id'   => 'flex-end',
 						'icon' => 'justify-end',
 					],
 					[
-						'name' => __( 'space-between', 'zionbuilder-pro' ),
+						'name' => __( 'space-between', 'finest-zionbuilder' ),
 						'id'   => 'space-between',
 						'icon' => 'justify-sp-btw',
 					],
 					[
-						'name' => __( 'space-around', 'zionbuilder-pro' ),
+						'name' => __( 'space-around', 'finest-zionbuilder' ),
 						'id'   => 'space-around',
 						'icon' => 'justify-sp-around',
 					],
@@ -278,19 +291,19 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'custom_selector',
 				'grow'        => '5',
-				'title'       => __( 'Wrap', 'zionbuilder-pro' ),
-				'description' => __( 'Set wrap for element', 'zionbuilder-pro' ),
+				'title'       => __( 'Wrap', 'finest-zionbuilder' ),
+				'description' => __( 'Set wrap for element', 'finest-zionbuilder' ),
 				'options'     => [
 					[
-						'name' => __( 'wrap', 'zionbuilder-pro' ),
+						'name' => __( 'wrap', 'finest-zionbuilder' ),
 						'id'   => 'wrap',
 					],
 					[
-						'name' => __( 'nowrap', 'zionbuilder-pro' ),
+						'name' => __( 'nowrap', 'finest-zionbuilder' ),
 						'id'   => 'nowrap',
 					],
 					[
-						'name' => __( 'wrap-reverse', 'zionbuilder-pro' ),
+						'name' => __( 'wrap-reverse', 'finest-zionbuilder' ),
 						'id'   => 'wrap-reverse',
 						'icon' => 'reverse',
 					],
@@ -302,37 +315,37 @@ class Finest_Custom_Style_Option
 			'align-content',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Align content', 'zionbuilder-pro' ),
-				'description' => __( 'Set align content', 'zionbuilder-pro' ),
+				'title'       => __( 'Align content', 'finest-zionbuilder' ),
+				'description' => __( 'Set align content', 'finest-zionbuilder' ),
 				'columns'     => 5,
 				'options'     => [
 					[
-						'name' => __( 'flex-start', 'zionbuilder-pro' ),
+						'name' => __( 'flex-start', 'finest-zionbuilder' ),
 						'id'   => 'flex-start',
 						'icon' => 'content-start',
 					],
 					[
-						'name' => __( 'center', 'zionbuilder-pro' ),
+						'name' => __( 'center', 'finest-zionbuilder' ),
 						'id'   => 'center',
 						'icon' => 'content-center',
 					],
 					[
-						'name' => __( 'flex-end', 'zionbuilder-pro' ),
+						'name' => __( 'flex-end', 'finest-zionbuilder' ),
 						'id'   => 'flex-end',
 						'icon' => 'content-end',
 					],
 					[
-						'name' => __( 'space-between', 'zionbuilder-pro' ),
+						'name' => __( 'space-between', 'finest-zionbuilder' ),
 						'id'   => 'space-between',
 						'icon' => 'content-space-btw',
 					],
 					[
-						'name' => __( 'space-around', 'zionbuilder-pro' ),
+						'name' => __( 'space-around', 'finest-zionbuilder' ),
 						'id'   => 'space-around',
 						'icon' => 'content-space-around',
 					],
 					[
-						'name' => __( 'strech', 'zionbuilder-pro' ),
+						'name' => __( 'strech', 'finest-zionbuilder' ),
 						'id'   => 'stretch',
 						'icon' => 'content-stretch',
 					],
@@ -344,7 +357,7 @@ class Finest_Custom_Style_Option
 			'flexbox-child-group',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Flexbox child options', 'zionbuilder-pro' ),
+				'title'     => __( 'Flexbox child options', 'finest-zionbuilder' ),
 				'collapsed' => true,
 			]
 		);
@@ -354,7 +367,7 @@ class Finest_Custom_Style_Option
 			[
 				'type'  => 'number',
 				'width' => 33.3,
-				'title' => __( 'Flex Grow', 'zionbuilder-pro' ),
+				'title' => __( 'Flex Grow', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -363,7 +376,7 @@ class Finest_Custom_Style_Option
 			[
 				'type'  => 'number',
 				'width' => 33.3,
-				'title' => __( 'Flex Shrink', 'zionbuilder-pro' ),
+				'title' => __( 'Flex Shrink', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -372,7 +385,7 @@ class Finest_Custom_Style_Option
 			[
 				'type'  => 'number_unit',
 				'width' => 33.3,
-				'title' => __( 'Flex Basis', 'zionbuilder-pro' ),
+				'title' => __( 'Flex Basis', 'finest-zionbuilder' ),
 				'units' => [
 					'px',
 					'pt',
@@ -387,31 +400,31 @@ class Finest_Custom_Style_Option
 			'align-self',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Align self', 'zionbuilder-pro' ),
-				'description' => __( 'Set align self', 'zionbuilder-pro' ),
+				'title'       => __( 'Align self', 'finest-zionbuilder' ),
+				'description' => __( 'Set align self', 'finest-zionbuilder' ),
 				'options'     => [
 					[
-						'name' => __( 'flex-start', 'zionbuilder-pro' ),
+						'name' => __( 'flex-start', 'finest-zionbuilder' ),
 						'id'   => 'flex-start',
 						'icon' => 'self-start',
 					],
 					[
-						'name' => __( 'center', 'zionbuilder-pro' ),
+						'name' => __( 'center', 'finest-zionbuilder' ),
 						'id'   => 'center',
 						'icon' => 'self-center',
 					],
 					[
-						'name' => __( 'flex-end', 'zionbuilder-pro' ),
+						'name' => __( 'flex-end', 'finest-zionbuilder' ),
 						'id'   => 'flex-end',
 						'icon' => 'self-end',
 					],
 					[
-						'name' => __( 'stretch', 'zionbuilder-pro' ),
+						'name' => __( 'stretch', 'finest-zionbuilder' ),
 						'id'   => 'stretch',
 						'icon' => 'self-stretch',
 					],
 					[
-						'name' => __( 'baseline', 'zionbuilder-pro' ),
+						'name' => __( 'baseline', 'finest-zionbuilder' ),
 						'id'   => 'baseline',
 						'icon' => 'self-baseline',
 					],
@@ -423,15 +436,15 @@ class Finest_Custom_Style_Option
 			'custom-order',
 			[
 				'type'    => 'custom_selector',
-				'title'   => __( 'Order', 'zionbuilder-pro' ),
+				'title'   => __( 'Order', 'finest-zionbuilder' ),
 				'width'   => 60,
 				'options' => [
 					[
-						'name' => __( 'first', 'zionbuilder-pro' ),
+						'name' => __( 'first', 'finest-zionbuilder' ),
 						'id'   => -1,
 					],
 					[
-						'name' => __( 'last', 'zionbuilder-pro' ),
+						'name' => __( 'last', 'finest-zionbuilder' ),
 						'id'   => 99,
 					],
 				],
@@ -442,7 +455,7 @@ class Finest_Custom_Style_Option
 			'order',
 			[
 				'type'  => 'number',
-				'title' => __( 'Custom Order', 'zionbuilder-pro' ),
+				'title' => __( 'Custom Order', 'finest-zionbuilder' ),
 				'width' => 40,
 			]
 		);
@@ -451,7 +464,7 @@ class Finest_Custom_Style_Option
 			'position-group',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Position options', 'zionbuilder-pro' ),
+				'title'     => __( 'Position options', 'finest-zionbuilder' ),
 				'collapsed' => true,
 			]
 		);
@@ -460,28 +473,28 @@ class Finest_Custom_Style_Option
 			'position',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Position', 'zionbuilder-pro' ),
-				'description' => __( 'Set element position', 'zionbuilder-pro' ),
+				'title'       => __( 'Position', 'finest-zionbuilder' ),
+				'description' => __( 'Set element position', 'finest-zionbuilder' ),
 				'columns'     => 4,
 				'options'     => [
 					[
-						'name' => __( 'static', 'zionbuilder-pro' ),
+						'name' => __( 'static', 'finest-zionbuilder' ),
 						'id'   => 'static',
 					],
 					[
-						'name' => __( 'relative', 'zionbuilder-pro' ),
+						'name' => __( 'relative', 'finest-zionbuilder' ),
 						'id'   => 'relative',
 					],
 					[
-						'name' => __( 'absolute', 'zionbuilder-pro' ),
+						'name' => __( 'absolute', 'finest-zionbuilder' ),
 						'id'   => 'absolute',
 					],
 					[
-						'name' => __( 'fixed', 'zionbuilder-pro' ),
+						'name' => __( 'fixed', 'finest-zionbuilder' ),
 						'id'   => 'fixed',
 					],
 					[
-						'name' => __( 'sticky', 'zionbuilder-pro' ),
+						'name' => __( 'sticky', 'finest-zionbuilder' ),
 						'id'   => 'sticky',
 					],
 				],
@@ -492,7 +505,7 @@ class Finest_Custom_Style_Option
 			'top',
 			[
 				'type'        => 'number_unit',
-				'title'       => __( 'Top', 'zionbuilder-pro' ),
+				'title'       => __( 'Top', 'finest-zionbuilder' ),
 				'placeholder' => '0px',
 				'width'       => '25',
 				'units'       => [
@@ -510,7 +523,7 @@ class Finest_Custom_Style_Option
 			'bottom',
 			[
 				'type'        => 'number_unit',
-				'title'       => __( 'Bottom', 'zionbuilder-pro' ),
+				'title'       => __( 'Bottom', 'finest-zionbuilder' ),
 				'placeholder' => '0px',
 				'width'       => '25',
 				'units'       => [
@@ -528,7 +541,7 @@ class Finest_Custom_Style_Option
 			'left',
 			[
 				'type'        => 'number_unit',
-				'title'       => __( 'Left', 'zionbuilder-pro' ),
+				'title'       => __( 'Left', 'finest-zionbuilder' ),
 				'placeholder' => '0px',
 				'width'       => '25',
 				'units'       => [
@@ -546,7 +559,7 @@ class Finest_Custom_Style_Option
 			'right',
 			[
 				'type'        => 'number_unit',
-				'title'       => __( 'Right', 'zionbuilder-pro' ),
+				'title'       => __( 'Right', 'finest-zionbuilder' ),
 				'placeholder' => '0px',
 				'width'       => '25',
 				'units'       => [
@@ -564,7 +577,7 @@ class Finest_Custom_Style_Option
 			'object-fit',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Object fit', 'zionbuilder-pro' ),
+				'title'     => __( 'Object fit', 'finest-zionbuilder' ),
 				'collapsed' => true,
 			]
 		);
@@ -574,29 +587,29 @@ class Finest_Custom_Style_Option
 			'object-fit',
 			[
 				'type'        => 'select',
-				'title'       => __( 'Object fit', 'zionbuilder-pro' ),
-				'description' => __( 'Object fit is used to specify how an <img> or <video> should be resized to fit its container.', 'zionbuilder-pro' ),
+				'title'       => __( 'Object fit', 'finest-zionbuilder' ),
+				'description' => __( 'Object fit is used to specify how an <img> or <video> should be resized to fit its container.', 'finest-zionbuilder' ),
 				'default'     => 'fill',
 				'options'     => [
 					[
 						'id'   => 'fill',
-						'name' => __( 'fill', 'zionbuilder-pro' ),
+						'name' => __( 'fill', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'contain',
-						'name' => __( 'contain', 'zionbuilder-pro' ),
+						'name' => __( 'contain', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'cover',
-						'name' => __( 'cover', 'zionbuilder-pro' ),
+						'name' => __( 'cover', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'none',
-						'name' => __( 'none', 'zionbuilder-pro' ),
+						'name' => __( 'none', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'scale-down',
-						'name' => __( 'scale-down', 'zionbuilder-pro' ),
+						'name' => __( 'scale-down', 'finest-zionbuilder' ),
 					],
 				],
 			]
@@ -606,8 +619,8 @@ class Finest_Custom_Style_Option
 			'object-position',
 			[
 				'type'        => 'text',
-				'title'       => __( 'Object fit position', 'zionbuilder-pro' ),
-				'description' => __( 'Object fit is used to specify how an <img> or <video> should be resized to fit its container.', 'zionbuilder-pro' ),
+				'title'       => __( 'Object fit position', 'finest-zionbuilder' ),
+				'description' => __( 'Object fit is used to specify how an <img> or <video> should be resized to fit its container.', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -615,7 +628,7 @@ class Finest_Custom_Style_Option
 			'floating-group',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Floating options', 'zionbuilder-pro' ),
+				'title'     => __( 'Floating options', 'finest-zionbuilder' ),
 				'collapsed' => true,
 			]
 		);
@@ -624,21 +637,53 @@ class Finest_Custom_Style_Option
 			'float',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Float', 'zionbuilder-pro' ),
-				'description' => __( 'Set float option for element', 'zionbuilder-pro' ),
+				'title'       => __( 'Float', 'finest-zionbuilder' ),
+				'description' => __( 'Set float option for element', 'finest-zionbuilder' ),
 				'columns'     => 3,
 				'options'     => [
 					[
-						'name' => __( 'left', 'zionbuilder-pro' ),
+						'name' => __( 'left', 'finest-zionbuilder' ),
 						'id'   => 'left',
 					],
 					[
-						'name' => __( 'right', 'zionbuilder-pro' ),
+						'name' => __( 'right', 'finest-zionbuilder' ),
 						'id'   => 'right',
 					],
 					[
-						'name' => __( 'none', 'zionbuilder-pro' ),
+						'name' => __( 'none', 'finest-zionbuilder' ),
 						'id'   => 'none',
+					],
+				],
+			]
+		);
+
+		$alignment_group = $options->add_group(
+			'alignment-group',
+			[
+				'type'      => 'panel_accordion',
+				'title'     => __( 'Alignment options', 'finest-zionbuilder' ),
+				'collapsed' => true,
+			]
+		);
+
+		$alignment_group->add_option(
+			'text-align',
+			[
+				'type'        => 'custom_selector',
+				'title'       => __( 'Text Align', 'finest-zionbuilder' ),
+				'columns'     => 3,
+				'options'     => [
+					[
+						'name' => __( 'left', 'finest-zionbuilder' ),
+						'id'   => 'left',
+					],
+					[
+						'name' => __( 'center', 'finest-zionbuilder' ),
+						'id'   => 'center',
+					],
+					[
+						'name' => __( 'right', 'finest-zionbuilder' ),
+						'id'   => 'right',
 					],
 				],
 			]
@@ -648,8 +693,8 @@ class Finest_Custom_Style_Option
 			'clear',
 			[
 				'type'        => 'custom_selector',
-				'title'       => __( 'Clear', 'zionbuilder-pro' ),
-				'description' => __( 'Set clear option for element', 'zionbuilder-pro' ),
+				'title'       => __( 'Clear', 'finest-zionbuilder' ),
+				'description' => __( 'Set clear option for element', 'finest-zionbuilder' ),
 				'columns'     => 3,
 				'options'     => [
 
@@ -677,9 +722,9 @@ class Finest_Custom_Style_Option
 			'transition-property',
 			[
 				'type'        => 'text',
-				'title'       => __( 'Transition property', 'zionbuilder-pro' ),
-				'description' => __( 'Add desired transition properties separated by comma', 'zionbuilder-pro' ),
-				'placeholder' => __( 'all', 'zionbuilder-pro' ),
+				'title'       => __( 'Transition property', 'finest-zionbuilder' ),
+				'description' => __( 'Add desired transition properties separated by comma', 'finest-zionbuilder' ),
+				'placeholder' => __( 'all', 'finest-zionbuilder' ),
 				'dynamic'     => false,
 			]
 		);
@@ -689,8 +734,8 @@ class Finest_Custom_Style_Option
 			'transition-duration',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Transition Duration', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired transition duration.', 'zionbuilder-pro' ),
+				'title'       => __( 'Transition Duration', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired transition duration.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 10000,
@@ -704,8 +749,8 @@ class Finest_Custom_Style_Option
 			'transition-delay',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Transition Delay', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired transition delay.', 'zionbuilder-pro' ),
+				'title'       => __( 'Transition Delay', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired transition delay.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 10000,
@@ -720,27 +765,27 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'select',
 				'default'     => 'linear',
-				'title'       => __( 'Timing function', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired timing function for the transition. Start typing to add a Custom transition', 'zionbuilder-pro' ),
+				'title'       => __( 'Timing function', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired timing function for the transition. Start typing to add a Custom transition', 'finest-zionbuilder' ),
 				'options'     => [
 					[
-						'name' => __( 'linear', 'zionbuilder-pro' ),
+						'name' => __( 'linear', 'finest-zionbuilder' ),
 						'id'   => 'linear',
 					],
 					[
-						'name' => __( 'ease', 'zionbuilder-pro' ),
+						'name' => __( 'ease', 'finest-zionbuilder' ),
 						'id'   => 'ease',
 					],
 					[
-						'name' => __( 'ease-in', 'zionbuilder-pro' ),
+						'name' => __( 'ease-in', 'finest-zionbuilder' ),
 						'id'   => 'ease-in',
 					],
 					[
-						'name' => __( 'ease-out', 'zionbuilder-pro' ),
+						'name' => __( 'ease-out', 'finest-zionbuilder' ),
 						'id'   => 'ease-out',
 					],
 					[
-						'name' => __( 'ease-in-out', 'zionbuilder-pro' ),
+						'name' => __( 'ease-in-out', 'finest-zionbuilder' ),
 						'id'   => 'ease-in-out',
 					],
 				],
@@ -756,13 +801,13 @@ class Finest_Custom_Style_Option
 			'transform',
 			[
 				'type'               => 'repeater',
-				'add_button_text'    => __( 'Add new transform property', 'zionbuilder-pro' ),
+				'add_button_text'    => __( 'Add new transform property', 'finest-zionbuilder' ),
 				'item_title'         => 'property',
 				'default_item_title' => 'item %s',
 				'reset_group'        => [
 					'option' => 'property',
 				],
-				'title'              => __( 'Transform properties', 'zionbuilder-pro' ),
+				'title'              => __( 'Transform properties', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -770,28 +815,28 @@ class Finest_Custom_Style_Option
 			'property',
 			[
 				'type'    => 'select',
-				'title'   => __( 'Property', 'zionbuilder-pro' ),
+				'title'   => __( 'Property', 'finest-zionbuilder' ),
 				'default' => 'translate',
 				'options' => [
 					[
 						'id'   => 'translate',
-						'name' => __( 'Translate', 'zionbuilder-pro' ),
+						'name' => __( 'Translate', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'scale',
-						'name' => __( 'Scale', 'zionbuilder-pro' ),
+						'name' => __( 'Scale', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'rotate',
-						'name' => __( 'Rotate', 'zionbuilder-pro' ),
+						'name' => __( 'Rotate', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'skew',
-						'name' => __( 'Skew', 'zionbuilder-pro' ),
+						'name' => __( 'Skew', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'perspective',
-						'name' => __( 'Perspective', 'zionbuilder-pro' ),
+						'name' => __( 'Perspective', 'finest-zionbuilder' ),
 					],
 				],
 			]
@@ -815,8 +860,8 @@ class Finest_Custom_Style_Option
 			'translateX',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Translate X', 'zionbuilder-pro' ),
-				'description' => __( 'Set translate property for X dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Translate X', 'finest-zionbuilder' ),
+				'description' => __( 'Set translate property for X dimension.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -856,8 +901,8 @@ class Finest_Custom_Style_Option
 			'translateY',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Translate Y', 'zionbuilder-pro' ),
-				'description' => __( 'Set translate property for Y dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Translate Y', 'finest-zionbuilder' ),
+				'description' => __( 'Set translate property for Y dimension.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -897,8 +942,8 @@ class Finest_Custom_Style_Option
 			'translateZ',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Translate Z', 'zionbuilder-pro' ),
-				'description' => __( 'Set translate property for Z dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Translate Z', 'finest-zionbuilder' ),
+				'description' => __( 'Set translate property for Z dimension.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -939,8 +984,8 @@ class Finest_Custom_Style_Option
 				'default'     => 1,
 				'step'        => 0.05,
 				'shift_step'  => 0.1,
-				'title'       => __( 'Scale X', 'zionbuilder-pro' ),
-				'description' => __( 'Set scale property for X dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Scale X', 'finest-zionbuilder' ),
+				'description' => __( 'Set scale property for X dimension.', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -953,9 +998,9 @@ class Finest_Custom_Style_Option
 				'default'      => 1,
 				'step'        => 0.05,
 				'shift_step'  => 0.1,
-				'title'        => __( 'Scale Y', 'zionbuilder-pro' ),
+				'title'        => __( 'Scale Y', 'finest-zionbuilder' ),
 				'default_unit' => 'unitless',
-				'description'  => __( 'Set scale property for Y dimension.', 'zionbuilder-pro' ),
+				'description'  => __( 'Set scale property for Y dimension.', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -968,8 +1013,8 @@ class Finest_Custom_Style_Option
 				'default'     => 1,
 				'step'        => 0.05,
 				'shift_step'  => 0.1,
-				'title'       => __( 'Scale Z', 'zionbuilder-pro' ),
-				'description' => __( 'Set scale property for Z dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Scale Z', 'finest-zionbuilder' ),
+				'description' => __( 'Set scale property for Z dimension.', 'finest-zionbuilder' ),
 			]
 		);
 
@@ -991,8 +1036,8 @@ class Finest_Custom_Style_Option
 			'rotate',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Rotate', 'zionbuilder-pro' ),
-				'description' => __( 'Set rotation property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Rotate', 'finest-zionbuilder' ),
+				'description' => __( 'Set rotation property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'deg',
@@ -1008,8 +1053,8 @@ class Finest_Custom_Style_Option
 			'rotateX',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Rotate X', 'zionbuilder-pro' ),
-				'description' => __( 'Set rotation property for X dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Rotate X', 'finest-zionbuilder' ),
+				'description' => __( 'Set rotation property for X dimension.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'deg',
@@ -1025,8 +1070,8 @@ class Finest_Custom_Style_Option
 			'rotateY',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Rotate Y', 'zionbuilder-pro' ),
-				'description' => __( 'Set rotation property for Y dimension.', 'zionbuilder-pro' ),
+				'title'       => __( 'Rotate Y', 'finest-zionbuilder' ),
+				'description' => __( 'Set rotation property for Y dimension.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'deg',
@@ -1043,8 +1088,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'         => 'dynamic_slider',
 				'default_unit' => 'deg',
-				'title'        => __( 'Rotate Z', 'zionbuilder-pro' ),
-				'description'  => __( 'Set rotation property for Z dimension.', 'zionbuilder-pro' ),
+				'title'        => __( 'Rotate Z', 'finest-zionbuilder' ),
+				'description'  => __( 'Set rotation property for Z dimension.', 'finest-zionbuilder' ),
 				'options'      => [
 					[
 						'unit' => 'deg',
@@ -1074,8 +1119,8 @@ class Finest_Custom_Style_Option
 			'skewX',
 			[
 				'type'         => 'dynamic_slider',
-				'title'        => __( 'Skew X', 'zionbuilder-pro' ),
-				'description'  => __( 'Set skew property for X dimension.', 'zionbuilder-pro' ),
+				'title'        => __( 'Skew X', 'finest-zionbuilder' ),
+				'description'  => __( 'Set skew property for X dimension.', 'finest-zionbuilder' ),
 				'default_unit' => 'deg',
 				'options'      => [
 					[
@@ -1092,8 +1137,8 @@ class Finest_Custom_Style_Option
 			'skewY',
 			[
 				'type'         => 'dynamic_slider',
-				'title'        => __( 'Skew Y', 'zionbuilder-pro' ),
-				'description'  => __( 'Set skew property for Y dimension.', 'zionbuilder-pro' ),
+				'title'        => __( 'Skew Y', 'finest-zionbuilder' ),
+				'description'  => __( 'Set skew property for Y dimension.', 'finest-zionbuilder' ),
 				'default_unit' => 'deg',
 				'options'      => [
 					[
@@ -1124,8 +1169,8 @@ class Finest_Custom_Style_Option
 			'perspective_value',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Perspective value', 'zionbuilder-pro' ),
-				'description' => __( 'Set perspective property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Perspective value', 'finest-zionbuilder' ),
+				'description' => __( 'Set perspective property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1159,8 +1204,8 @@ class Finest_Custom_Style_Option
 			'perspective_origin_x_axis',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Perspective origin x-axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set perspective property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Perspective origin x-axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set perspective property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => '%',
@@ -1186,8 +1231,8 @@ class Finest_Custom_Style_Option
 			'perspective_origin_y_axis',
 			[
 				'type'        => 'dynamic_slider',
-				'title'       => __( 'Perspective origin y-axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set perspective property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Perspective origin y-axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set perspective property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => '%',
@@ -1214,8 +1259,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'perspective',
-				'title'       => __( 'Perspective', 'zionbuilder-pro' ),
-				'description' => __( 'Set perspective property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Perspective', 'finest-zionbuilder' ),
+				'description' => __( 'Set perspective property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1241,8 +1286,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'transform_origin_x_axis',
-				'title'       => __( 'Transform origin X axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set horizontal position of the transform origin', 'zionbuilder-pro' ),
+				'title'       => __( 'Transform origin X axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set horizontal position of the transform origin', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => '%',
@@ -1269,8 +1314,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'transform_origin_y_axis',
-				'title'       => __( 'Transform origin Y axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set vertical position of the transform origin', 'zionbuilder-pro' ),
+				'title'       => __( 'Transform origin Y axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set vertical position of the transform origin', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => '%',
@@ -1297,8 +1342,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'transform_origin_z_axis',
-				'title'       => __( 'Transform origin Z axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set the Z offset of the transform origin', 'zionbuilder-pro' ),
+				'title'       => __( 'Transform origin Z axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set the Z offset of the transform origin', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1316,25 +1361,25 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'select',
 				'id'          => 'transform_style',
-				'title'       => __( 'Transform style', 'zionbuilder-pro' ),
-				'description' => __( 'Specifies that child elements will preserve its 3D position', 'zionbuilder-pro' ),
+				'title'       => __( 'Transform style', 'finest-zionbuilder' ),
+				'description' => __( 'Specifies that child elements will preserve its 3D position', 'finest-zionbuilder' ),
 				'default'     => 'flat',
 				'options'     => [
 					[
 						'id'   => 'flat',
-						'name' => __( 'Flat', 'zionbuilder-pro' ),
+						'name' => __( 'Flat', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'preserve-3d',
-						'name' => __( 'Preserve 3d', 'zionbuilder-pro' ),
+						'name' => __( 'Preserve 3d', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'initial',
-						'name' => __( 'Initial', 'zionbuilder-pro' ),
+						'name' => __( 'Initial', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'inherit',
-						'name' => __( 'Inherit', 'zionbuilder-pro' ),
+						'name' => __( 'Inherit', 'finest-zionbuilder' ),
 					],
 				],
 
@@ -1359,8 +1404,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'x_axis',
-				'title'       => __( 'X axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set X axis origin property.', 'zionbuilder-pro' ),
+				'title'       => __( 'X axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set X axis origin property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1391,8 +1436,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'y_axis',
-				'title'       => __( 'Y axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set Y axis origin property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Y axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set Y axis origin property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1423,8 +1468,8 @@ class Finest_Custom_Style_Option
 			[
 				'type'        => 'dynamic_slider',
 				'id'          => 'z_axis',
-				'title'       => __( 'Z axis', 'zionbuilder-pro' ),
-				'description' => __( 'Set Z axis origin property.', 'zionbuilder-pro' ),
+				'title'       => __( 'Z axis', 'finest-zionbuilder' ),
+				'description' => __( 'Set Z axis origin property.', 'finest-zionbuilder' ),
 				'options'     => [
 					[
 						'unit' => 'px',
@@ -1443,7 +1488,7 @@ class Finest_Custom_Style_Option
 			'filters-group',
 			[
 				'type'      => 'panel_accordion',
-				'title'     => __( 'Filter options', 'zionbuilder-pro' ),
+				'title'     => __( 'Filter options', 'finest-zionbuilder' ),
 				'collapsed' => false,
 			]
 		);
@@ -1453,85 +1498,85 @@ class Finest_Custom_Style_Option
 			'mix-blend-mode',
 			[
 				'type'        => 'select',
-				'title'       => __( 'Mix Blend Mode', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired mix blend mode.', 'zionbuilder-pro' ),
+				'title'       => __( 'Mix Blend Mode', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired mix blend mode.', 'finest-zionbuilder' ),
 				'default'     => 'normal',
 				'options'     => [
 					[
 						'id'   => 'normal',
-						'name' => __( 'normal', 'zionbuilder-pro' ),
+						'name' => __( 'normal', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'multiply',
-						'name' => __( 'multiply', 'zionbuilder-pro' ),
+						'name' => __( 'multiply', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'screen',
-						'name' => __( 'screen', 'zionbuilder-pro' ),
+						'name' => __( 'screen', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'overlay',
-						'name' => __( 'overlay', 'zionbuilder-pro' ),
+						'name' => __( 'overlay', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'darken',
-						'name' => __( 'darken', 'zionbuilder-pro' ),
+						'name' => __( 'darken', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'lighten',
-						'name' => __( 'lighten', 'zionbuilder-pro' ),
+						'name' => __( 'lighten', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'color-dodge',
-						'name' => __( 'color-dodge', 'zionbuilder-pro' ),
+						'name' => __( 'color-dodge', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'color-burn',
-						'name' => __( 'color-burn', 'zionbuilder-pro' ),
+						'name' => __( 'color-burn', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'hard-light',
-						'name' => __( 'hard-light', 'zionbuilder-pro' ),
+						'name' => __( 'hard-light', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'soft-light',
-						'name' => __( 'soft-light', 'zionbuilder-pro' ),
+						'name' => __( 'soft-light', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'difference',
-						'name' => __( 'difference', 'zionbuilder-pro' ),
+						'name' => __( 'difference', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'exclusion',
-						'name' => __( 'exclusion', 'zionbuilder-pro' ),
+						'name' => __( 'exclusion', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'hue',
-						'name' => __( 'hue', 'zionbuilder-pro' ),
+						'name' => __( 'hue', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'saturation',
-						'name' => __( 'saturation', 'zionbuilder-pro' ),
+						'name' => __( 'saturation', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'color',
-						'name' => __( 'color', 'zionbuilder-pro' ),
+						'name' => __( 'color', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'luminosity',
-						'name' => __( 'luminosity', 'zionbuilder-pro' ),
+						'name' => __( 'luminosity', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'initial',
-						'name' => __( 'initial', 'zionbuilder-pro' ),
+						'name' => __( 'initial', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'inherit',
-						'name' => __( 'inherit', 'zionbuilder-pro' ),
+						'name' => __( 'inherit', 'finest-zionbuilder' ),
 					],
 					[
 						'id'   => 'unset',
-						'name' => __( 'unset', 'zionbuilder-pro' ),
+						'name' => __( 'unset', 'finest-zionbuilder' ),
 					],
 				],
 			]
@@ -1541,8 +1586,8 @@ class Finest_Custom_Style_Option
 			'grayscale',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Grayscale', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired grayscale css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Grayscale', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired grayscale css filter.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 100,
@@ -1554,8 +1599,8 @@ class Finest_Custom_Style_Option
 			'sepia',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Sepia', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired sepia css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Sepia', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired sepia css filter.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 100,
@@ -1567,8 +1612,8 @@ class Finest_Custom_Style_Option
 			'blur',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Blur', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired blur css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Blur', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired blur css filter.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 200,
@@ -1580,8 +1625,8 @@ class Finest_Custom_Style_Option
 			'brightness',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Brightness', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired brightness css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Brightness', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired brightness css filter.', 'finest-zionbuilder' ),
 				'default'     => 100,
 				'min'         => 0,
 				'max'         => 100,
@@ -1593,8 +1638,8 @@ class Finest_Custom_Style_Option
 			'hue-rotate',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Hue Rotate', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired hue rotate css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Hue Rotate', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired hue rotate css filter.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 360,
@@ -1606,8 +1651,8 @@ class Finest_Custom_Style_Option
 			'saturate',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Saturate', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired saturate css filter.', 'zionbuilder-pro' ),
+				'title'       => __( 'Saturate', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired saturate css filter.', 'finest-zionbuilder' ),
 				'default'     => 100,
 				'min'         => 0,
 				'max'         => 200,
@@ -1619,8 +1664,8 @@ class Finest_Custom_Style_Option
 			'opacity',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Opacity', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired opacity for the element.', 'zionbuilder-pro' ),
+				'title'       => __( 'Opacity', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired opacity for the element.', 'finest-zionbuilder' ),
 				'default'     => 100,
 				'min'         => 0,
 				'max'         => 100,
@@ -1632,8 +1677,8 @@ class Finest_Custom_Style_Option
 			'contrast',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Contrast', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired contrast for the element.', 'zionbuilder-pro' ),
+				'title'       => __( 'Contrast', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired contrast for the element.', 'finest-zionbuilder' ),
 				'default'     => 100,
 				'min'         => 0,
 				'max'         => 100,
@@ -1645,8 +1690,8 @@ class Finest_Custom_Style_Option
 			'invert',
 			[
 				'type'        => 'slider',
-				'title'       => __( 'Invert', 'zionbuilder-pro' ),
-				'description' => __( 'Set the desired invert filter for the element.', 'zionbuilder-pro' ),
+				'title'       => __( 'Invert', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired invert filter for the element.', 'finest-zionbuilder' ),
 				'default'     => 0,
 				'min'         => 0,
 				'max'         => 100,

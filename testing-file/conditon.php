@@ -545,3 +545,10 @@ class Section extends Element {
 		$this->render_tag( 'div', 'inner_content_styles', $this->get_children_for_render() );
 	}
 }
+
+
+
+
+'config'     => [
+	'show_background_video' => true,
+],

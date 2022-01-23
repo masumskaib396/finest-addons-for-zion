@@ -4,83 +4,81 @@
 
 WIDGET STYLESHEET
 
- * HEADDING
+ * ICON BOX
+ * ANIMATE TEXT
+ * TESTIMONIAL
+ * DUAL HEADING
 
 ---------------------------------- */
 /*---------------------------------------------------
 ICON BOX
 ----------------------------------------------------*/
-
-.finest__icon-box {
+.fzb__icon-box {
     box-shadow: 0px 4px 80px rgba(8, 15, 30, 0.06);
     border-radius: 3px;
     padding: 30px;
 }
-.finest__icon span{
+
+
+.fzb__icon span{
     font-size: 24px;
     margin-bottom: 20px;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
     align-items: center;
     background-color: #EF2469;
     text-align: center;
-    border-radius: 50%;
     color: #fff;
+    padding: 17px 22px;
+    border-radius: 50%;
 }
 
-.finest__icon-title {
+.fzb__icon-title {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 15px;
     font-weight: 600;
 }
-.finest__icon-box.left {
+.fzb__icon-box.left {
     display: -webkit-inline-box;
     display: -webkit-inline-box;
 }
-.finest__icon-box.left .finest__icon span{
+.fzb__icon-box.left .fzb__icon span{
     margin-right: 12px;
 }
 
 
 /* style tow */
-.finest__icon-box.style__one {
+.fzb__icon-box.style__one {
     display: flex;
 }
 
-.style__one .finest__icon span{
-    margin-right: 20px;
+.style__one .fzb__icon span{
     margin-bottom: 0;
-    height: 50px;
-    width: 50px;
+    margin-right: 15px;
+    padding: 10px 14px;
 }
 
 /* Sytle three */
-.finest__icon-box.style__two {
+.fzb__icon-box.style__two {
     display: flex;
     padding: 0;
     box-shadow: none;
     padding: 20px;
     transition: 0.4s;
-    /* background-color: #fff; */
 }
 
-.style__two .finest__icon span {
+.style__two .fzb__icon span {
     margin-right: 15px;
-    width: 50px;
-    height: 50px;
+    padding: 10px 14px;
 }
 
-.style__two.finest__icon-title {
+.style__two.fzb__icon-title {
     font-weight: 700;
     font-size: 21px;
     line-height: 32px;
     margin-bottom: 15px;
 }
 
-.finest__icon-box.style__two:hover {
+.fzb__icon-box.style__two:hover {
     box-shadow: 0px 4px 4px rgba(35, 40, 105, 0.08);
     border-radius: 10px;
     background-color: #fff;
@@ -106,6 +104,249 @@ ICON BOX
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-.finest__icon.icon__default span {
+.fzb__icon.icon__default span {
     justify-content: left;
+}
+/*---------------------------------------------------
+ANIMATE TEXT
+----------------------------------------------------*/
+.fzb__animate-text-wraper {
+    font-size: 32px;
+    font-weight: 700;
+}
+.fzb__animate-text {
+    color: #EF2469;
+}
+
+/*---------------------------------------------------
+TESTIMONIAL
+----------------------------------------------------*/
+
+.fzb__testimonial-wrap {
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0px 34px 104px rgba(18, 22, 28, 0.1);
+    border-radius: 10px;
+}
+
+.fzb__testimonial-image img {
+    width: 90px;
+    height: 90px !important;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+.fzb__testimonial-discription {
+    font-size: 18px;
+    line-height: 26px;
+    color: #12141D;
+    margin-bottom: 30px;
+}
+
+.fzb__testimonial-name {
+    font-size: 16px;
+    line-height: 28px;
+    color: #12141D;
+    margin-bottom: 5px;
+}
+
+.fzb__testimonial-designation {
+    font-size: 16px;
+    line-height: 26px;
+    color: #52525B;
+}
+
+/* Style Two */
+.fzb__testimonial-wrap.style-two {
+    text-align: inherit;
+}
+.fzb__testimonial-wrap.style-two .fzb__testimonial-name{
+    margin-bottom: 0;
+}
+.fzb__testimonial-wrap.style-two .fzb__testimonial-rating span {
+    color: #F59E0B;
+    margin-right: 4px;
+    margin-bottom: 30px;
+}
+
+.fzb__testimonial-wrap.style-two .fzb__testimonial-user-info-wrap {
+    display: flex;
+    align-items: center;
+}
+.fzb__testimonial-wrap.style-two .fzb__testimonial-image img {
+    width: 43px;
+    height: 43px !important;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+/* Style Theree */
+.fzb__testimonial-wrap.style-theree {
+    text-align: inherit;
+}
+.fzb__testimonial-wrap.style-theree .fzb__testimonial-user-info-wrap {
+    display: flex;
+    align-items: center;
+}
+.fzb__testimonial-wrap.style-theree .fzb__testimonial-image img {
+    width: 43px;
+    height: 43px !important;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+.fzb__testimonial-wrap.style-theree {
+    background: #FFFFFF;
+    border: 1px solid #EAE9F2;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 15px;
+}
+.fzb__testimonial-wrap.style-theree .fzb__testimonial-content-wrap .fzb__testimonial-discription {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.fzb__testimonial-quote-icon {
+    position: absolute;
+    right: 15px;
+    color: #0EA5E9;
+    font-size: 20px;
+    top: 20px;
+}
+
+.fzb__testimonial-wrap.style-theree .fzb__testimonial-name {
+    margin-bottom: 0px;
+}
+
+/* Style Four */
+.fzb__testimonial-wrap.style-four {
+    text-align: inherit;
+}
+.fzb__testimonial-wrap.style-four .fzb__testimonial-name{
+    margin-bottom: 0;
+}
+.fzb__testimonial-wrap.style-four .fzb__testimonial-rating span {
+    color: #F59E0B;
+    margin-right: 4px;
+    margin-bottom: 30px;
+}
+
+.fzb__testimonial-wrap.style-four .fzb__testimonial-user-info-wrap {
+    display: flex;
+    align-items: center;
+}
+.fzb__testimonial-wrap.style-four .fzb__testimonial-image img {
+    width: 43px;
+    height: 43px !important;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+.fzb__testimonial-heading {
+    font-size: 21px;
+    margin-bottom: 20px;
+    line-height: 31px;
+}
+/*---------------------------------------------------
+DUAL HEADING
+----------------------------------------------------*/
+.fzb__duul-headding-wrap {
+    font-size: 30px;
+    color: #132c47;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+.fzb__duul-headding-before {
+    color: #FF6C4B;
+}
+.fzb__duul-headding-middle {
+    color: #132C47;
+}
+.fzb__duul-headding-after {
+    color: #086AD7;
+}
+.fzb__duul-headding-before.before-block {
+    display: block;
+}
+.fzb__duul-headding-middle.middle-block {
+    display: block;
+}
+
+/* GRADIENT HEADING */
+.fzb__gradient-heading-wraper{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent;
+    background-size: 200% auto;
+    color: #333;
+    background-image: linear-gradient(114deg, #18208d 1%, #06bee1 100%);
+}
+
+.fzb__gradient-heading-wraper.style-one{
+    animation: finest-gradient 5s ease infinite;
+    -webkit-animation: finest-gradient 5s ease infinite;
+}
+
+.fzb__gradient-heading-wraper.style-two{
+    animation: finest-shine 10s ease infinite;
+    -webkit-animation: finest-shine 10s ease infinite;
+}
+
+@keyframes finest-gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes finest-shine {
+   to {
+       background-position: 200% center;
+  }
+}
+
+
+/* TEAM MEMBAR */
+.fzb__membar-image img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+.zb-el-finestTeamMembar {
+    background-color: #fff;
+    box-shadow: 0px 4px 60px rgba(0, 11, 51, 0.1);
+}
+
+.fzb-membar-info {
+    padding: 30px 20px;
+}
+
+.fzb__membar-name {
+    font-size: 20px;
+    line-height: 26px;
+    color: #0F1A54;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.fzb__membar-designation {
+    color: rgba(15, 26, 84, 0.7);font-size: 14px;line-height: 21px;
+}
+
+.fzb__membar-social-links {
+    margin-top: 15px;
+}
+
+.fzb__membar-social-links .fzb__membar-item {
+    font-size: 16px;
+    margin-right: 20px;
 }
