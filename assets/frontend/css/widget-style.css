@@ -8,6 +8,8 @@ WIDGET STYLESHEET
  * ANIMATE TEXT
  * TESTIMONIAL
  * DUAL HEADING
+ * GRADIENT HEADING
+ * TEAM MEMBER
 
 ---------------------------------- */
 /*---------------------------------------------------
@@ -274,8 +276,9 @@ DUAL HEADING
 .fzb__duul-headding-middle.middle-block {
     display: block;
 }
-
-/* GRADIENT HEADING */
+/*---------------------------------------------------
+GRADIENT HEADING
+----------------------------------------------------*/
 .fzb__gradient-heading-wraper{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -313,40 +316,58 @@ DUAL HEADING
   }
 }
 
-
-/* TEAM MEMBAR */
-.fzb__membar-image img {
+/*---------------------------------------------------
+TEAM MEMBER
+----------------------------------------------------*/
+.fzb__member-image img {
     height: 300px;
     width: 100%;
     object-fit: cover;
     object-position: center top;
 }
-.zb-el-finestTeamMembar {
-    background-color: #fff;
-    box-shadow: 0px 4px 60px rgba(0, 11, 51, 0.1);
+
+
+.fzb__member-image {
+    position: relative;
 }
 
-.fzb-membar-info {
-    padding: 30px 20px;
+.style-one .fzb__member-social-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
 }
 
-.fzb__membar-name {
-    font-size: 20px;
-    line-height: 26px;
-    color: #0F1A54;
-    font-weight: 700;
-    margin-bottom: 5px;
+.fzb__member-wraper:hover .fzb__member-social-links {
+    opacity: 1;
+    visibility: visible;
+    bottom: 15px;
 }
-
-.fzb__membar-designation {
-    color: rgba(15, 26, 84, 0.7);font-size: 14px;line-height: 21px;
-}
-
-.fzb__membar-social-links {
-    margin-top: 15px;
-}
-
-.fzb__membar-social-links .fzb__membar-item {
+.style-one .fzb__member-social-links span.fzb__member-item {
+    background-color: #EA5555;
+    color: #fff;
     font-size: 16px;
-    margin-right: 20px;
+    padding: 16px 20px;
+}
+.style-one .fzb-member-info {
+    text-align: center;
+}
+
+.fzb-member-info {
+    padding: 30px;
+}
+
+.fzb__member-name {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+
+.fzb__member-designation {
+    font-size: 18px;
+    line-height: 30px;
+    color: #52525B;
 }

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Text
  *
  */
-class Finest_Team_Membar extends Element {
+class Finest_Team_Member extends Element {
 	/**
 	 * Get type
 	 *
@@ -22,7 +22,7 @@ class Finest_Team_Membar extends Element {
 	 * @return string The element id/type
 	 */
 	public function get_type() {
-		return 'finest-team-membar';
+		return 'finest-team-member';
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Finest_Team_Membar extends Element {
 	 * @return string The element name
 	 */
 	public function get_name() {
-		return esc_html__( 'Finest Team Membar', 'finest-zionbuilder' );
+		return esc_html__( 'Finest Team Member', 'finest-zionbuilder' );
 	}
 
 
@@ -51,7 +51,7 @@ class Finest_Team_Membar extends Element {
 	 * @return array<string> The list of element keywords
 	 */
 	public function get_keywords() {
-		return [ 'team', 'membar', 'card', 'testimonial'];
+		return [ 'team', 'member', 'card', 'testimonial'];
 	}
 
 	/**
@@ -73,12 +73,39 @@ class Finest_Team_Membar extends Element {
 
 	public function options( $options ) {
 
+		$options->add_option(
+			'member_style',
+			[
+				'type'             => 'select',
+				'title'            => esc_html__( 'Select Style', 'finest-zionbuilder' ),
+				'options'          => [
+					[
+						'name' => esc_html__( 'Style 01', 'finest-zionbuilder' ),
+						'id'   => 'style-one',
+					],
+					[
+						'name' => esc_html__( 'Style 02', 'finest-zionbuilder' ),
+						'id'   => 'style-two',
+					],
+					[
+						'name' => esc_html__( 'Style 03', 'finest-zionbuilder' ),
+						'id'   => 'style-theree',
+					],
+					[
+						'name' => esc_html__( 'Style 04', 'finest-zionbuilder' ),
+						'id'   => 'style-four',
+					],
+				],
+				'default'          => 'style-one',
+			]
+		);
+
         $options->add_option(
 			'image',
 			[
 				'type'        => 'image',
-				'description' => 'Choose the desired membar photo.',
-				'title'       => esc_html__( 'Membar Photo', 'finest-zionbuilder' ),
+				'description' => 'Choose the desired member photo.',
+				'title'       => esc_html__( 'Member Photo', 'finest-zionbuilder' ),
 				'show_size'   => false,
 				'default'     => $this->get_url( 'empty-profile-photo.svg' ),
 			]
@@ -88,9 +115,9 @@ class Finest_Team_Membar extends Element {
 			'name',
 			[
 				'type'        => 'text',
-				'title'       => __( 'Membar name', 'finest-zionbuilder' ),
-				'description' => __( 'Set the desired Membar name.', 'finest-zionbuilder' ),
-				'placeholder' => __( 'Membar name', 'finest-zionbuilder' ),
+				'title'       => __( 'Member name', 'finest-zionbuilder' ),
+				'description' => __( 'Set the desired Member name.', 'finest-zionbuilder' ),
+				'placeholder' => __( 'Member name', 'finest-zionbuilder' ),
 				'default'     => esc_html__( 'Robert Fox', 'finest-zionbuilder' ),
 				'dynamic'     => [
 					'enabled' => true,
@@ -113,7 +140,7 @@ class Finest_Team_Membar extends Element {
 		);
 
 		$options->add_option(
-			'show_membar_social_links',
+			'show_member_social_links',
 			[
 				'type'    => 'checkbox_switch',
 				'title'   => esc_html__( 'Show Social Links', 'finest-zionbuilder' ),
@@ -126,8 +153,8 @@ class Finest_Team_Membar extends Element {
 			'icons',
 			[
 				'type'               => 'repeater',
-				'title'              => __( 'List items', 'zionbuilder' ),
-				'add_button_text'    => __( 'Add new list item', 'zionbuilder' ),
+				'title'              => __( 'Social Links', 'finest-zionbuilde' ),
+				'add_button_text'    => __( 'Add new list item', 'finest-zionbuilde' ),
 				'item_title'         => 'text',
 				'default_item_title' => 'item %s',
 				'default'            => [
@@ -158,7 +185,7 @@ class Finest_Team_Membar extends Element {
 				],
 				'dependency'   => [
 					[
-						'option' => 'show_membar_social_links',
+						'option' => 'show_member_social_links',
 						'value'  => [true],
 					],
 				],
@@ -170,8 +197,8 @@ class Finest_Team_Membar extends Element {
 			[
 				'type'        => 'icon_library',
 				'id'          => 'icon',
-				'title'       => esc_html__( 'Icon', 'zionbuilder' ),
-				'description' => esc_html__( 'Choose an icon', 'zionbuilder' ),
+				'title'       => esc_html__( 'Icon', 'finest-zionbuilde' ),
+				'description' => esc_html__( 'Choose an icon', 'finest-zionbuilde' ),
 			]
 		);
 
@@ -180,7 +207,7 @@ class Finest_Team_Membar extends Element {
 			[
 				'type'        => 'link',
 				'description' => 'This is the element content',
-				'title'       => __( 'Link', 'zionbuilder' ),
+				'title'       => __( 'Link', 'finest-zionbuilde' ),
 			]
 		);
 
@@ -188,12 +215,12 @@ class Finest_Team_Membar extends Element {
 			'icon_color',
 			[
 				'type'        => 'colorpicker',
-				'title'       => __( 'Icon Color', 'zionbuilder' ),
-				'description' => __( 'Select the color of the icon', 'zionbuilder' ),
+				'title'       => __( 'Icon Color', 'finest-zionbuilde' ),
+				'description' => __( 'Select the color of the icon', 'finest-zionbuilde' ),
 				'default'     => '#006dd2',
 				'css_style'   => [
 					[
-						'selector' => '{{ELEMENT}} .fzb__membar-item--{{INDEX}} .fzb__membar-itemIcon',
+						'selector' => '{{ELEMENT}} .fzb__member-item--{{INDEX}} .fzb__member-itemIcon',
 						'value'    => 'color: {{VALUE}}',
 					],
 				],
@@ -204,12 +231,12 @@ class Finest_Team_Membar extends Element {
 			'icon_bg_color',
 			[
 				'type'        => 'colorpicker',
-				'title'       => __( 'Icon Background Color', 'zionbuilder' ),
-				'description' => __( 'Select the Background color of the icon', 'zionbuilder' ),
+				'title'       => __( 'Icon Background Color', 'finest-zionbuilde' ),
+				'description' => __( 'Select the Background color of the icon', 'finest-zionbuilde' ),
 				'default'     => '#ddd',
 				'css_style'   => [
 					[
-						'selector' => '{{ELEMENT}} .fzb__membar-item--{{INDEX}} .fzb__membar-itemIcon',
+						'selector' => '{{ELEMENT}} .fzb__member-item--{{INDEX}} .fzb__member-itemIcon',
 						'value'    => 'background-color: {{VALUE}}',
 					],
 				],
@@ -239,72 +266,24 @@ class Finest_Team_Membar extends Element {
 	 */
 	public function render($options) {
 
+		$member_style = $options->get_value('member_style');
 		$image = $options->get_value('image');
         $name = $options->get_value('name');
         $designation = $options->get_value('designation');
+        $show_member_social_links = $options->get_value('show_member_social_links');
+
 
 		$icons = $options->get_value( 'icons', [] );
 		$index = 0;
 
+		var_dump($member_style);
+
 		?>
 
-		<div class="fzb__membar-wraper">
-
-			<div class="fzb__membar-image">
-				<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_html( $name ); ?>">
-			</div>
-
-			<div class="fzb-membar-info">
-				<?php if( $name ): ?>
-					<h3 class="fzb__membar-name">
-						<?php echo esc_html( $name ); ?>
-					</h3>
-				<?php endif; ?>
-
-				<?php if( $designation ): ?>
-					<span class="fzb__membar-designation">
-						<?php echo esc_html( $designation ); ?>
-					</span>
-				<?php endif; ?>
-
-
-				<div class="fzb__membar-social-links">
-					<?php
-						foreach ( $icons as $key => $config ) {
-							$icon_html        = '';
-							$text_html        = '';
-							$html_tag         = 'span';
-							$link             = ! empty( $config['link'] ) ? $config['link'] : false;
-
-							$item_index_class = sprintf( 'fzb__membar-item fzb__membar-item--%s', $key);
-
-							$combined_icon_attr = $this->render_attributes->get_combined_attributes( 'icon_styles', [ 'class' => 'fzb__membar-itemIcon' ] );
-							$combined_text_attr = $this->render_attributes->get_combined_attributes( 'text_styles', [ 'class' => 'fzb__membar-itemText' ] );
-							$combined_item_attr = $this->render_attributes->get_combined_attributes( 'item_styles', [ 'class' => $item_index_class ] );
-							if ( ! empty( $link['link'] ) ) {
-								$this->attach_link_attributes( 'item' . $index, $link );
-								$html_tag = 'a';
-							}
-							if ( ! empty( $config['icon'] ) ) {
-								$this->attach_icon_attributes( 'icon', $config['icon'] );
-								$icon_html = $this->get_render_tag(
-									'span',
-									'icon',
-									'',
-									$combined_icon_attr
-								);
-							}
-							$this->render_tag(
-								$html_tag,
-								'item' . $index, [ $icon_html, $text_html ],
-								$combined_item_attr
-							);
-
-						};
-					?>
-				</div>
-			</div>
-
+		<div class="fzb__member-wraper <?php echo esc_attr( $member_style ); ?>">
+				<?php if ($member_style) {
+					include('version/' . $member_style . '.php');
+				} ?>
 		</div>
 
 		<?php
@@ -312,4 +291,4 @@ class Finest_Team_Membar extends Element {
 	}
 
 }
-$elements_manager->register_element( new \Finest\Elements\Finest_Team_Membar() );
+$elements_manager->register_element( new \Finest\Elements\Finest_Team_Member() );

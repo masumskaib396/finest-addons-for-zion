@@ -106,7 +106,7 @@ final class Finest_ZionBuilder_Extension {
 		require_once( FZB_WIDGET_DIR . 'Testimonial/widget.php');
 		require_once( FZB_WIDGET_DIR . 'GradientHeading/widget.php');
 		require_once( FZB_WIDGET_DIR . 'DualHeading/widget.php');
-		require_once( FZB_WIDGET_DIR . 'TeamMembar/widget.php');
+		require_once( FZB_WIDGET_DIR . 'TeamMember/widget.php');
 
     }
 	public $elements_manager = null;
