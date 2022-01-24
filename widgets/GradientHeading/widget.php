@@ -189,7 +189,7 @@ class Finest_Gradient_Heading extends Element {
 			'title_styles',
 			[
 				'title'      => esc_html__( 'Gradient Heading styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__gradient-heading',
+				'selector'   => '{{ELEMENT}} .fzb__gradient-heading-wraper',
 				'render_tag' => 'heading_styles',
 			]
 		);
