@@ -326,13 +326,22 @@ GRADIENT HEADING
 /*---------------------------------------------------
 TEAM MEMBER
 ----------------------------------------------------*/
-.fzb__member-image img {
-    height: 300px;
+.fzb__member-image img{
     width: 100%;
     object-fit: cover;
     object-position: center top;
 }
+.style-one .fzb__member-image img {
+    height: 466;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block !important;
+}
 
+.style-one .fzb-member-info{
+    padding-top: 30px;
+}
 
 .fzb__member-image {
     position: relative;
@@ -358,13 +367,10 @@ TEAM MEMBER
     color: #fff;
     font-size: 16px;
     padding: 16px 20px;
+    letter-spacing: normal;
 }
 .style-one .fzb-member-info {
     text-align: center;
-}
-
-.fzb-member-info {
-    padding: 30px;
 }
 
 .fzb__member-name {
@@ -377,4 +383,112 @@ TEAM MEMBER
     font-size: 18px;
     line-height: 30px;
     color: #52525B;
+}
+/* Style two */
+
+.style-two .fzb__member-image img {
+    border-radius: 10px;
+    height: 350px;
+}
+.style-two .fzb-member-info{
+    padding-top: 40px;
+}
+.style-two .fzb__member-name {
+    font-size: 18px;
+    line-height: 24px;
+    color: #18181B;
+    margin-bottom: 8px;
+}
+
+.style-two .fzb__member-designation {
+    color: #52525B;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 25px;
+}
+
+.style-two .fzb__member-social-links .fzb__member-itemIcon {
+    border-radius: 6px;
+    background-color: #323232;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-right: 10px;
+}
+/* Style theree */
+.fzb__member-wraper.style-three {
+    text-align: center;
+}
+
+.style-three .fzb__member-image img {
+    width: 176px;
+    height: 176px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.style-three .fzb__member-name {
+    font-size: 21px;
+    line-height: 32px;
+    margin-bottom: 9px;
+    color: #18181B;
+}
+
+.style-three .fzb__member-designation {
+    font-size: 16px;
+    line-height: 26px;
+    color: #52525B;
+}
+.style-three .fzb__member-social-links {
+    margin-top: 15px;
+}
+
+.style-three .fzb__member-social-links .fzb__member-item {
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.style-three .fzb__member-social-links .fzb__member-item:last-child {
+    margin-right: 0;
+}
+/* Style four */
+.style-four .fzb__member-social-links {
+    margin-top: 15px;
+}
+
+.style-four .fzb__member-social-links .fzb__member-item {
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.style-four .fzb__member-social-links .fzb__member-item:last-child {
+    margin-right: 0;
+}
+.fzb__member-wraper.style-four {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E7;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.style-four .fzb__member-image img {
+    width: 103px;
+    height: 103px;
+    border-radius: 50%;
+    margin-bottom: 0;
+    margin-right: 26px;
+}
+
+.style-four .fzb__member-name {
+    font-size: 24px;
+    line-height: 34px;
+    color: #18181B;
+    margin-bottom: 6px;
 }

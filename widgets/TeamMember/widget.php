@@ -89,7 +89,7 @@ class Finest_Team_Member extends Element {
 					],
 					[
 						'name' => esc_html__( 'Style 03', 'finest-zionbuilder' ),
-						'id'   => 'style-theree',
+						'id'   => 'style-three',
 					],
 					[
 						'name' => esc_html__( 'Style 04', 'finest-zionbuilder' ),
@@ -257,6 +257,55 @@ class Finest_Team_Member extends Element {
 
 
 
+		$this->register_style_options_element(
+			'member_box_image',
+			[
+				'title'      => esc_html__( 'Member Image', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb__member-image img',
+			]
+		);
+
+		$this->register_style_options_element(
+			'member_name_styles',
+			[
+				'title'      => esc_html__( 'Name', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb__member-name',
+			]
+		);
+
+		$this->register_style_options_element(
+			'member_designation_styles',
+			[
+				'title'      => esc_html__( 'Member Designation', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb__member-designation',
+			]
+		);
+
+		$this->register_style_options_element(
+			'member_box_styles',
+			[
+				'title'      => esc_html__( 'Box', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb__member-wraper',
+			]
+		);
+
+		$this->register_style_options_element(
+			'member_content_box_styles',
+			[
+				'title'      => esc_html__( 'Content Box', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb-member-info',
+			]
+		);
+
+		$this->register_style_options_element(
+			'member_social_styles',
+			[
+				'title'      => esc_html__( 'Social Links', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .fzb__member-social-links .fzb__member-itemIcon',
+			]
+		);
+
+
 	}
 
 	/**
@@ -275,8 +324,6 @@ class Finest_Team_Member extends Element {
 
 		$icons = $options->get_value( 'icons', [] );
 		$index = 0;
-
-		var_dump($member_style);
 
 		?>
 
