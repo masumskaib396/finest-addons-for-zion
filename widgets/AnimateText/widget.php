@@ -469,7 +469,7 @@ class Finest_AnimateText extends Element {
 			<span class="fzb__animate-before-text">
 				<?php echo esc_html( $finest_before_text ); ?>
 			</span>
-				<span id="fzb-animate-text-<?php echo esc_attr( $id ) ?>" class="fzb__animate-text"></span>
+				<span id="fzb-animate-text-id" class="fzb__animate-text"></span>
 			<span class="fzb__animate-after-text">
 				<?php echo esc_html( $finest_after_text ); ?>
 			</span>

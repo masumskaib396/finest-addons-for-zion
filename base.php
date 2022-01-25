@@ -43,11 +43,38 @@ final class Finest_ZionBuilder_Extension {
         add_action( 'zionbuilder/elements_manager/register_elements', [ $this, 'fzb_register_elements' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'fzb_enqueue_scripts' ] );
 
+
+		add_action( 'zionbuilder/editor/before_scripts', [ $this, 'finest_enqueue_scripts' ], 1000 );
+		add_action( 'zionbuilder/preview/before_load_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
+		add_action( 'zionbuilder/admin/before_admin_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
+
 		// Check for required PHP version
 		if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice_minimum_php_version' ] );
 			return;
 		}
+	}
+
+	public function finest_enqueue_scripts(){
+
+		wp_enqueue_style(
+			'animated',
+			FZB_ASSETS_PUBLIC .'/frontend/css/animate.css',
+			null, FZB_VERSION
+		);
+
+		// css javascript
+		wp_enqueue_script(
+			'jstyped',
+			FZB_ASSETS_PUBLIC .'/frontend/js/typed.min.js',
+			['jquery'], FZB_VERSION, true
+		);
+
+		wp_enqueue_script(
+			'finest-zionbuilder-animate',
+			FZB_ASSETS_PUBLIC .'/frontend/js/finest-animate.js',
+			['jquery' ,'jstyped'], time(), true
+		);
 	}
 
 	// Enqueue Script
@@ -67,13 +94,32 @@ final class Finest_ZionBuilder_Extension {
 		);
 
 
+		wp_enqueue_style(
+			'twentytwenty',
+			FZB_ASSETS_VERDOR .'/twentytwenty/css/twentytwenty.css',
+			null, FZB_VERSION
+		);
 
+
+
+		wp_enqueue_script(
+			'event-move',
+			FZB_ASSETS_VERDOR .'/twentytwenty/js/jquery.event.move.js',
+			['jquery'], FZB_VERSION, true
+		);
 
 
 		// css javascript
 		wp_enqueue_script(
 			'jstyped',
 			FZB_ASSETS_PUBLIC .'/frontend/js/typed.min.js',
+			['jquery'], FZB_VERSION, true
+		);
+
+
+		wp_enqueue_script(
+			'twentytwenty',
+			FZB_ASSETS_VERDOR .'/twentytwenty/js/jquery.twentytwenty.js',
 			['jquery'], FZB_VERSION, true
 		);
 
@@ -85,7 +131,19 @@ final class Finest_ZionBuilder_Extension {
 
 
 
+		// wp_enqueue_script(
+		// 	'finest-zionbuilder-animate',
+		// 	FZB_ASSETS_PUBLIC .'/frontend/js/finest-animate.js',
+		// 	['jquery' ,'jstyped'], time(), true
+		// );
+
+
+
 	}
+
+
+
+
 
 	public function fzb_elements_categories( $categories ) {
         $finest_plugin_category = [
@@ -107,6 +165,7 @@ final class Finest_ZionBuilder_Extension {
 		require_once( FZB_WIDGET_DIR . 'GradientHeading/widget.php');
 		require_once( FZB_WIDGET_DIR . 'DualHeading/widget.php');
 		require_once( FZB_WIDGET_DIR . 'TeamMember/widget.php');
+		require_once( FZB_WIDGET_DIR . 'ImageComparison/widget.php');
 
     }
 	public $elements_manager = null;
