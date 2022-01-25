@@ -34,7 +34,6 @@
                 backSpeed: settings.back_type_speed,
                 showCursor : settings.show_cursor,
                 loop: settings.loop,
-                // fadeOut:settings.fade_out,
             });
           });
 

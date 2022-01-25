@@ -286,7 +286,7 @@ DUAL HEADING
 /*---------------------------------------------------
 GRADIENT HEADING
 ----------------------------------------------------*/
-.fzb__gradient-heading-wraper{
+.fzb__gradient-heading{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-color: transparent;
@@ -295,12 +295,12 @@ GRADIENT HEADING
     background-image: linear-gradient(114deg, #18208d 1%, #06bee1 100%);
 }
 
-.fzb__gradient-heading-wraper.style-one{
+.fzb__gradient-heading.style-one{
     animation: finest-gradient 5s ease infinite;
     -webkit-animation: finest-gradient 5s ease infinite;
 }
 
-.fzb__gradient-heading-wraper.style-two{
+.fzb__gradient-heading.style-two{
     animation: finest-shine 10s ease infinite;
     -webkit-animation: finest-shine 10s ease infinite;
 }

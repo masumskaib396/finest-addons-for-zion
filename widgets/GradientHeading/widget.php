@@ -73,15 +73,7 @@ class Finest_Gradient_Heading extends Element {
 
 	public function options( $options ) {
 
-		$options->add_option(
-			'show_heading_animate_style',
-			[
-				'type'    => 'checkbox_switch',
-				'title'   => esc_html__( 'Show Gradient Style', 'finest-zionbuilder' ),
-				'default' => false,
-				'layout'  => 'inline',
-			]
-		);
+
 
 		$options->add_option(
 			'heading_animate_style',
@@ -103,12 +95,6 @@ class Finest_Gradient_Heading extends Element {
 					]
 				],
 				'default'          => 'style-one',
-				'dependency'   => [
-					[
-						'option' => 'show_heading_animate_style',
-						'value'  => [true],
-					],
-				],
 			]
 		);
 
@@ -189,8 +175,7 @@ class Finest_Gradient_Heading extends Element {
 			'title_styles',
 			[
 				'title'      => esc_html__( 'Gradient Heading styles', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__gradient-heading-wraper',
-				'render_tag' => 'heading_styles',
+				'selector'   => '{{ELEMENT}} .fzb__gradient-heading',
 			]
 		);
 
@@ -207,20 +192,16 @@ class Finest_Gradient_Heading extends Element {
 
 		$gradient_heading_style = $options->get_value('heading_animate_style');
 
-		if( $gradient_heading_style == true){
-			$gradient_heading_verson = $gradient_heading_style;
-		}else{
-			$gradient_heading_verson = '';
-		}
+
 
 
         $heading_tag   = $options->get_value( 'heading_tag', 'h2' );
         $gradient_heading  = $options->get_value( 'finest-gradient-heading');
-        $combined_heading_attr  = $this->render_attributes->get_combined_attributes( 'heading_styles', [ 'class' =>  'fzb__gradient-heading'] );
+        $combined_heading_attr  = $this->render_attributes->get_combined_attributes( 'heading_styles', [ 'class' =>  'fzb__gradient-heading ' . $gradient_heading_style ] );
 
         if ( ! empty( $gradient_heading ) ) {
 			?>
-			<div class="fzb__gradient-heading-wraper <?php echo esc_attr( $gradient_heading_verson ); ?>">
+			<div class="fzb__gradient-heading-wraper">
 				<?php
 					$this->render_tag( $heading_tag, 'finest-gradient-heading', wp_kses_post(  $gradient_heading ), $combined_heading_attr );
 				?>
