@@ -94,7 +94,7 @@ class Finest_Gradient_Heading extends Element {
 						'id'   => 'style-two',
 					]
 				],
-				'default'          => 'style-one',
+				'default'          => 'default',
 			]
 		);
 

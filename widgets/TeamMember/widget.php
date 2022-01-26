@@ -228,6 +228,22 @@ class Finest_Team_Member extends Element {
 		);
 
 		$icons->add_option(
+			'icon_hover_color',
+			[
+				'type'        => 'colorpicker',
+				'title'       => __( 'Icon Hover Color', 'finest-zionbuilde' ),
+				'description' => __( 'Select the color of the icon', 'finest-zionbuilde' ),
+				'default'     => '#006dd2',
+				'css_style'   => [
+					[
+						'selector' => '{{ELEMENT}} .fzb__member-item--{{INDEX}} .fzb__member-itemIcon:hover',
+						'value'    => 'color: {{VALUE}}',
+					],
+				],
+			]
+		);
+
+		$icons->add_option(
 			'icon_bg_color',
 			[
 				'type'        => 'colorpicker',
@@ -237,6 +253,21 @@ class Finest_Team_Member extends Element {
 				'css_style'   => [
 					[
 						'selector' => '{{ELEMENT}} .fzb__member-item--{{INDEX}} .fzb__member-itemIcon',
+						'value'    => 'background-color: {{VALUE}}',
+					],
+				],
+			]
+		);
+
+		$icons->add_option(
+			'icon_hover_bg_color',
+			[
+				'type'        => 'colorpicker',
+				'title'       => __( 'Icon Background Hover Color', 'finest-zionbuilde' ),
+				'description' => __( 'Select the color of the icon', 'finest-zionbuilde' ),
+				'css_style'   => [
+					[
+						'selector' => '{{ELEMENT}} .fzb__member-item--{{INDEX}} .fzb__member-itemIcon:hover',
 						'value'    => 'background-color: {{VALUE}}',
 					],
 				],
