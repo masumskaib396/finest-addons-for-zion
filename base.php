@@ -44,9 +44,9 @@ final class Finest_ZionBuilder_Extension {
 		add_action( 'wp_enqueue_scripts', [ $this, 'fzb_enqueue_scripts' ] );
 
 
-		add_action( 'zionbuilder/editor/before_scripts', [ $this, 'finest_enqueue_scripts' ], 1000 );
-		add_action( 'zionbuilder/preview/before_load_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
-		add_action( 'zionbuilder/admin/before_admin_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
+		// add_action( 'zionbuilder/editor/before_scripts', [ $this, 'finest_enqueue_scripts' ], 1000 );
+		// add_action( 'zionbuilder/preview/before_load_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
+		// add_action( 'zionbuilder/admin/before_admin_scripts', [ $this, 'finest_enqueue_scripts' ], 9 );
 
 		// Check for required PHP version
 		if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
@@ -55,27 +55,7 @@ final class Finest_ZionBuilder_Extension {
 		}
 	}
 
-	public function finest_enqueue_scripts(){
 
-		wp_enqueue_style(
-			'animated',
-			FZB_ASSETS_PUBLIC .'/frontend/css/animate.css',
-			null, FZB_VERSION
-		);
-
-		// css javascript
-		wp_enqueue_script(
-			'jstyped',
-			FZB_ASSETS_PUBLIC .'/frontend/js/typed.min.js',
-			['jquery'], FZB_VERSION, true
-		);
-
-		wp_enqueue_script(
-			'finest-zionbuilder-animate',
-			FZB_ASSETS_PUBLIC .'/frontend/js/finest-animate.js',
-			['jquery' ,'jstyped'], time(), true
-		);
-	}
 
 	// Enqueue Script
 	public function fzb_enqueue_scripts(){
@@ -166,6 +146,7 @@ final class Finest_ZionBuilder_Extension {
 		require_once( FZB_WIDGET_DIR . 'DualHeading/widget.php');
 		require_once( FZB_WIDGET_DIR . 'TeamMember/widget.php');
 		require_once( FZB_WIDGET_DIR . 'ImageComparison/widget.php');
+		require_once( FZB_WIDGET_DIR . 'Cf7/widget.php');
 
     }
 	public $elements_manager = null;
