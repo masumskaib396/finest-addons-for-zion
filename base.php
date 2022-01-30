@@ -106,7 +106,7 @@ final class Finest_ZionBuilder_Extension {
 		wp_enqueue_script(
 			'finest-zionbuilder',
 			FZB_ASSETS_PUBLIC .'/frontend/js/widget.js',
-			['jquery'], time(), true
+			['jquery'], FZB_VERSION, true
 		);
 
 
@@ -147,6 +147,7 @@ final class Finest_ZionBuilder_Extension {
 		require_once( FZB_WIDGET_DIR . 'TeamMember/widget.php');
 		require_once( FZB_WIDGET_DIR . 'ImageComparison/widget.php');
 		require_once( FZB_WIDGET_DIR . 'Cf7/widget.php');
+		require_once( FZB_WIDGET_DIR . 'Wpform/widget.php');
 
     }
 	public $elements_manager = null;

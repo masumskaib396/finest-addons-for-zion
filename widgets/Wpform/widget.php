@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Text
  *
  */
-class Finest_Cf7 extends Element {
+class Finest_Wpform extends Element {
 	/**
 	 * Get type
 	 *
@@ -22,7 +22,7 @@ class Finest_Cf7 extends Element {
 	 * @return string The element id/type
 	 */
 	public function get_type() {
-		return 'finest-cf7-box';
+		return 'finest-wp-form';
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Finest_Cf7 extends Element {
 	 * @return string The element name
 	 */
 	public function get_name() {
-		return esc_html__( 'Finest Contact Form 7', 'finest-zionbuilder' );
+		return esc_html__( 'Finest WpForm ', 'finest-zionbuilder' );
 	}
 
 
@@ -51,7 +51,7 @@ class Finest_Cf7 extends Element {
 	 * @return array<string> The list of element keywords
 	 */
 	public function get_keywords() {
-		return [ 'form', 'contact', 'cf7'];
+		return [ 'form', 'contact', 'wp'];
 	}
 
 	/**
@@ -73,21 +73,17 @@ class Finest_Cf7 extends Element {
 
 	public function options( $options ) {
 
-
         $options->add_option(
-			'finest_cf7_form_shortcode',
+			'finest_wp_form_shortcode',
             [
 				'type'        => 'text',
-				'title'       => __( 'Input Your Contact Form 7 Shortcode', 'finest-zionbuilder' ),
-				'placeholder' => __( '[contact-form-7 id="2065" title="Contact form 1"]', 'finest-zionbuilder' ),
+				'title'       => __( 'Input Your Wpform Shortcode', 'finest-zionbuilder' ),
+				'placeholder' => __( '[wpforms id="2107" title="false"]', 'finest-zionbuilder' ),
 				'dynamic'     => [
 					'enabled' => true,
 				],
 			]
 		);
-
-
-
 
 
 
@@ -107,15 +103,7 @@ class Finest_Cf7 extends Element {
 			'input_label',
 			[
 				'title'      => esc_html__( 'Label Style', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__cf7-wraper label',
-			]
-		);
-
-		$this->register_style_options_element(
-			'input_text_style',
-			[
-				'title'      => esc_html__( 'Input Field Style', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__cf7-wraper .wpcf7-form-control:not(.wpcf7-submit)',
+				'selector'   => '{{ELEMENT}} .wpforms-field-container label.wpforms-field-label',
 			]
 		);
 
@@ -127,19 +115,35 @@ class Finest_Cf7 extends Element {
 			]
 		);
 
+		$this->register_style_options_element(
+			'input_text',
+			[
+				'title'      => esc_html__( 'Input Style', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .wpforms-field input',
+			]
+		);
 
 		$this->register_style_options_element(
 			'input_textarea',
 			[
 				'title'      => esc_html__( 'Textarea Style', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__cf7-wraper .wpcf7-textarea',
+				'selector'   => '{{ELEMENT}} .wpforms-field-textarea textarea',
 			]
 		);
+
 		$this->register_style_options_element(
-			'input_button',
+			'subtitle_style',
+			[
+				'title'      => esc_html__( 'Sub Title Style', 'finest-zionbuilder' ),
+				'selector'   => '{{ELEMENT}} .wpforms-field-sublabel',
+			]
+		);
+
+		$this->register_style_options_element(
+			'button_style',
 			[
 				'title'      => esc_html__( 'Button Style', 'finest-zionbuilder' ),
-				'selector'   => '{{ELEMENT}} .fzb__cf7-wraper .wpcf7-submit',
+				'selector'   => '{{ELEMENT}} .wpforms-submit',
 			]
 		);
 
@@ -152,17 +156,15 @@ class Finest_Cf7 extends Element {
 	 */
 	public function render($options) {
 
-        $finest_cf7_form_shortcode = $options->get_value('finest_cf7_form_shortcode');
+        $finest_wp_form_shortcode = $options->get_value('finest_wp_form_shortcode');
 
         ?>
-        <div class="fzb__cf7-wraper">
-              <?php echo do_shortcode( $finest_cf7_form_shortcode ); ?>
-
-			 ?>
+        <div class="fzb__wp-wraper">
+              <?php echo do_shortcode( $finest_wp_form_shortcode ); ?>
         </div>
         <?php
 
 
 	}
 }
-$elements_manager->register_element( new \Finest\Elements\Finest_Cf7() );
+$elements_manager->register_element( new \Finest\Elements\Finest_Wpform() );
